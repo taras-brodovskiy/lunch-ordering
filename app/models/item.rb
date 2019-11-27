@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   
-  before_save :fix_name_format
+  before_save :fix_name_format, :fix_kind_format
     
   validates :name,  presence: true, length: { maximum: 50 }, 
                     uniqueness: { case_sensitive: false }
@@ -12,5 +12,9 @@ class Item < ApplicationRecord
 
     def fix_name_format
       name.capitalize!
+    end
+
+    def fix_kind_format
+      kind.downcase!
     end
 end

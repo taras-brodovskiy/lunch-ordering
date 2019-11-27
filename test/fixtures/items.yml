@@ -1,0 +1,14 @@
+borsch:
+  name: Borsch
+  price: 2.5
+  kind: first
+
+kasha:
+  name: Kasha
+  price: 3.0
+  kind: main
+
+compot:
+  name: Compot
+  price: 0.5
+  kind: drink
