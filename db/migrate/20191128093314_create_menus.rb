@@ -5,6 +5,6 @@ class CreateMenus < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :menus, :menu_date
+    add_index :menus, :menu_date, unique: true
   end
 end

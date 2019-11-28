@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_093314) do
     t.date "menu_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_date"], name: "index_menus_on_menu_date"
+    t.index ["menu_date"], name: "index_menus_on_menu_date", unique: true
   end
 
   create_table "orders", force: :cascade do |t|
