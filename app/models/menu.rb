@@ -1,8 +1,9 @@
 class Menu < ApplicationRecord
-  
+  has_many :fillings, dependent:   :destroy
+  has_many :items,    through:     :fillings
   
   validates :menu_date, presence: true
-  validate :actual_date
+  validate  :actual_date
   
   private
     def actual_date

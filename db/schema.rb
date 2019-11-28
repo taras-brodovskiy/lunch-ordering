@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_093314) do
+ActiveRecord::Schema.define(version: 2019_11_28_122311) do
 
   create_table "contents", force: :cascade do |t|
     t.integer "order_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_11_28_093314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_contents_on_order_id"
+  end
+
+  create_table "fillings", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_fillings_on_item_id"
+    t.index ["menu_id", "item_id"], name: "index_fillings_on_menu_id_and_item_id", unique: true
+    t.index ["menu_id"], name: "index_fillings_on_menu_id"
   end
 
   create_table "items", force: :cascade do |t|

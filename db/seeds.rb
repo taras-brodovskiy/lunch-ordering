@@ -58,3 +58,12 @@ users.each do |user|
                       main_course:  main_course,
                       drink:        drink)
 end
+
+# Menu
+menu_date = Time.zone.now.to_date
+menu = Menu.create!(menu_date: menu_date) 
+29.times do |n|
+  item_id = n * 2 + 1;
+  menu.fillings.create!(menu: menu,
+                        item: Item.find(item_id))  
+end
