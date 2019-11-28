@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  validate :actual_price
   belongs_to :user
 
   has_one :content, dependent: :destroy
@@ -8,6 +7,7 @@ class Order < ApplicationRecord
   has_one :drink, through: :content
 
   validates :price, presence: true
+  validate :actual_price
 
   def actual_price
     if (first_course.price + main_course.price + drink.price) != price

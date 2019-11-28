@@ -1,0 +1,2 @@
+one:
+  menu_date: <%= Time.zone.now.to_date %>

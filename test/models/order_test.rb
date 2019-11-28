@@ -15,8 +15,8 @@ class OrderTest < ActiveSupport::TestCase
     assert_not @order.valid?
   end
   
-  test "price should be present" do
-    @order.price = nil
+  test "price should be equal to total cost of items" do
+    @order.price = 99.99
     assert_not @order.valid?
   end
 end
