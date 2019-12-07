@@ -1,3 +1,26 @@
 <header>
   <%= link_to "lunch ordering", root_path %>
+  <nav>
+    <ul>
+      <% if logged_in? %>
+        <li><%= link_to "Home", '#' %></li> 
+        <% if current_user.admin %>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Orders", '#' %></li>
+          <li><%= link_to "Items", '#' %></li>
+        <% end %>
+        <li>
+          <a href="#">Account</a>
+          <ul>
+            <li><%= link_to "Edit account", edit_user_path(current_user) %></li>
+            <li>-------</li>
+            <li><%= link_to "Sign out", signout_path, method: :delete %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to "Sign in", signin_path %></li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      <% end %>
+    </ul>
+  </nav>
 </header>

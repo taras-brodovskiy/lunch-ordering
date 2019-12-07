@@ -5,7 +5,7 @@ User.create!(name:  "Admin",
              password_confirmation: "password",
              admin: true)
 
-10.times do |n|
+40.times do |n|
   name  = Faker::Name.name
   email = "user#{n+1}@seed.ru"
   password = "password"
@@ -16,8 +16,8 @@ User.create!(name:  "Admin",
 end
 
 # Menu items
-20.times do |n|
-  name = "#{Faker::Food.dish}-#{n}"
+40.times do |n|
+  name = "#{Faker::Food.dish}-#{n+1}"
   kind = "first"
   price = Random.rand(20.0) + 0.1
   Item.create!(name:  name,
@@ -25,8 +25,8 @@ end
                price: price)
 end
 
-20.times do |n|
-  name = "#{Faker::Dessert.variety}-#{n}"
+45.times do |n|
+  name = "#{Faker::Dessert.variety}-#{n+1}"
   kind = "main"
   price = Random.rand(30.0) + 0.1
   Item.create!(name:  name,
@@ -34,8 +34,8 @@ end
                price: price)
 end
 
-20.times do |n|
-  name = "#{Faker::Coffee.blend_name}-#{n}"
+35.times do |n|
+  name = "#{Faker::Coffee.blend_name}-#{n+1}"
   kind = "drink"
   price = Random.rand(5.0) + 0.1
   Item.create!(name:  name,
