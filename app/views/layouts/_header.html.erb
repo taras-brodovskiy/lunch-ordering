@@ -7,7 +7,13 @@
         <% if current_user.admin %>
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Orders", '#' %></li>
-          <li><%= link_to "Items", '#' %></li>
+          <li>
+            <a href="#">Items</a>
+            <ul>
+              <li><%= link_to "Show", items_path %></li>
+              <li><%= link_to "New", new_item_path %></li>
+            </ul>
+          </li>
         <% end %>
         <li>
           <a href="#">Account</a>

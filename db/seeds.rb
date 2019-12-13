@@ -20,27 +20,33 @@ end
   name = "#{Faker::Food.dish}-#{n+1}"
   kind = "first"
   price = Random.rand(20.0) + 0.1
-  Item.create!(name:  name,
+  photo = File.open("storage/first_course.png")
+  item = Item.create!(name:  name,
                kind:  kind,
-               price: price)
+               price: price,
+               photo: photo)
 end
 
 45.times do |n|
   name = "#{Faker::Dessert.variety}-#{n+1}"
   kind = "main"
   price = Random.rand(30.0) + 0.1
-  Item.create!(name:  name,
+  photo = File.open("storage/main_course.png")
+  item = Item.create!(name:  name,
                kind:  kind,
-               price: price)
+               price: price,
+               photo: photo)
 end
 
 35.times do |n|
   name = "#{Faker::Coffee.blend_name}-#{n+1}"
   kind = "drink"
   price = Random.rand(5.0) + 0.1
-  Item.create!(name:  name,
+  photo = File.open("storage/drink.png")
+  item = Item.create!(name:  name,
                kind:  kind,
-               price: price)
+               price: price,
+               photo: photo)
 end
 
 # Orders

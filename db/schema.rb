@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 2019_12_01_171248) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.float "price"
-    t.string "picture"
+    t.string "kind"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "kind"
     t.index ["kind"], name: "index_items_on_kind"
     t.index ["name"], name: "index_items_on_name", unique: true
   end

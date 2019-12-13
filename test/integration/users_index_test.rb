@@ -21,8 +21,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 
   test "index as non-admin" do
     get users_path
-    assert_not flash.empty?
-    assert_redirected_to signin_url
+    assert_redirected_to root_path
     log_in_as(@non_admin)
     get users_path
     assert_not flash.empty?

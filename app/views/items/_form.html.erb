@@ -1,0 +1,19 @@
+<%= form_for(@item) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :kind %>
+  <%=
+    select_tag "kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
+                name: 'item[kind]'
+  %><br>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %><br>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo, accept: 'image/png,image/jpeg,image/gif' %><br>
+
+  <%= f.submit yield(:button_text) %>
+<% end %>

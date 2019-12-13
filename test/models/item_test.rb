@@ -3,8 +3,7 @@ require 'test_helper'
 class ItemTest < ActiveSupport::TestCase
   
   def setup
-    @item = Item.new(name: "Pasta", price: 4.99,
-                     kind: "main")
+    @item = items(:latte)
   end
 
   test "should be valid" do

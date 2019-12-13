@@ -1,0 +1,12 @@
+<% provide(:title, 'Items') %>
+<h1>Items</h1>
+
+<h2>Total items: <%= @items.size %></h2>
+
+<%= will_paginate %>
+
+<ul>
+  <%= render @items %>
+</ul>
+
+<%= will_paginate %>
