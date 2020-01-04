@@ -1,0 +1,12 @@
+<% provide(:title, 'Menu') %>
+<h1>Menu for: <%= @menu.menu_date %></h1>
+
+<%= render 'form' %>
+
+<%= will_paginate %>
+
+<ul>
+  <%= render @items %>
+</ul>
+
+<%= will_paginate %>

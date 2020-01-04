@@ -1,12 +1,14 @@
 <% provide(:title, 'Items') %>
-<h1>Items</h1>
+<h1>Items index</h1>
 
-<h2>Total items: <%= @items.size %></h2>
+<h2 id="items_count">Total items: <%= Item.where("kind=?", @kind).count %></h2>
 
-<%= will_paginate %>
+<% provide(:button_text, 'Add item') %>
+<h2>Add item</h2>
+<%= render 'form' %>
 
-<ul>
+<h2>Items list:</h2>
+
+<ul id="items_list">
   <%= render @items %>
 </ul>
-
-<%= will_paginate %>

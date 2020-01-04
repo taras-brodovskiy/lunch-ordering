@@ -1,0 +1,2 @@
+$("#items_count").html("Total items: <%= Item.where("kind=?", @kind).count %>");
+$("#items_list").html("<%= escape_javascript(render @items) %>");

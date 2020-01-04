@@ -1,10 +1,20 @@
+<%= form_with(url: items_path, method: "get") do %>
+  <%= label_tag(:kind, "Item's kind:") %><br>
+  <%= select_tag "kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
+                name: 'kind'
+  %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<br>
+
 <%= form_for(@item) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
   <%= f.label :kind %>
   <%=
     select_tag "kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
-                name: 'item[kind]'
+                name: 'kind'
   %><br>
   <%= f.label :name %>
   <%= f.text_field :name %><br>

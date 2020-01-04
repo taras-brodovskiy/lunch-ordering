@@ -2,11 +2,14 @@ class ItemsController < ApplicationController
   before_action :access_check
    
   def index
-    @items = Item.all.paginate(page: params[:page])
-  end
-
-  def new
     @item = Item.new
+    @kind = params[:kind] || 'first'
+    #@items = Item.where("kind = ?", @kind).paginate(page: params[:page])
+    @items = Item.where("kind = ?", @kind)
+    respond_to do |format|
+      format.html { render 'index' }
+      format.js
+    end
   end
 
   def create
@@ -15,7 +18,7 @@ class ItemsController < ApplicationController
       flash[:success] = "The item was successfully added to the list"
       redirect_to items_path
     else
-      render 'new'
+      redirect_to items_path
     end
   end
 
