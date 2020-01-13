@@ -1,0 +1,11 @@
+<% provide(:title, 'Create menu') %>
+<h1>Create menu for today</h1>
+
+<%= render 'kind_form' %>
+<%= render 'current_menu_form' %>
+
+<%= will_paginate @items %>
+<ul id="items_list">
+  <%= render @items %>
+</ul>
+<%= will_paginate @items %>

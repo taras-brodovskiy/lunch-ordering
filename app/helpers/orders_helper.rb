@@ -3,17 +3,17 @@ module OrdersHelper
     kind = item.kind    
     case kind
     when 'first'
-      cookies.permanent[:first_course] = {
+      cookies[:first_course] = {
         value: item.name,
         expires: 10.minutes
       }
     when 'main'
-      cookies.permanent[:main_course] = {
+      cookies[:main_course] = {
         value: item.name,
         expires: 10.minutes
       }
     when 'drink'
-      cookies.permanent[:drink] = {
+      cookies[:drink] = {
         value: item.name,
         expires: 10.minutes
       }
@@ -23,11 +23,11 @@ module OrdersHelper
   def current_order_item_name(kind)        
     case kind
     when 'first'
-      item_name = cookies.permanent[:first_course] 
+      item_name = cookies[:first_course]
     when 'main'
-      item_name = cookies.permanent[:main_course]
+      item_name = cookies[:main_course]
     when 'drink'
-      item_name = cookies.permanent[:drink]
+      item_name = cookies[:drink]
     end
     return item_name
   end
@@ -35,11 +35,11 @@ module OrdersHelper
   def current_order_item_price(kind)            
     case kind
     when 'first'
-      item_name = cookies.permanent[:first_course] 
+      item_name = cookies[:first_course] 
     when 'main'
-      item_name = cookies.permanent[:main_course]
+      item_name = cookies[:main_course]
     when 'drink'
-      item_name = cookies.permanent[:drink]
+      item_name = cookies[:drink]
     end
     unless item_name
       return nil
@@ -49,20 +49,20 @@ module OrdersHelper
   end
 
   def clear_current_order
-    if cookies.permanent[:first_course]
+    if cookies[:first_course]
       cookies.delete :first_course
     end
-    if cookies.permanent[:main_course]
+    if cookies[:main_course]
       cookies.delete :main_course
     end
-    if cookies.permanent[:drink]
+    if cookies[:drink]
       cookies.delete :drink
     end
   end
 
   def current_order_total_price
-    names = [cookies.permanent[:first_course], cookies.permanent[:main_course], 
-              cookies.permanent[:drink]]
+    names = [cookies[:first_course], cookies[:main_course], 
+              cookies[:drink]]
     prices = []
     names.each do |name|
       if name

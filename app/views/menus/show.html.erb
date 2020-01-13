@@ -1,9 +1,9 @@
 <% provide(:title, 'Menu') %>
 <h1 id="menu_date">Menu for: <%= @menu.menu_date %></h1>
 
-<%= render 'form' %>
-
-<%= render 'current_order' %>
+<%= render 'date_form' %>
+<%= render  'kind_form' %>
+<%= render 'current_order_form' %>
 
 <%= will_paginate @items %>
 <ul id="items_list">

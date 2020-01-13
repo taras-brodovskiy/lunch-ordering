@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_171248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_orders_on_created_at"
+    t.index ["order_date", "user_id"], name: "index_orders_on_order_date_and_user_id", unique: true
     t.index ["order_date"], name: "index_orders_on_order_date"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

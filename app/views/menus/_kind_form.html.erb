@@ -1,0 +1,19 @@
+<% if controller_name == "menus" && action_name == "show" %>
+  <%= form_with(url: menu_path, method: "get", local: true) do %>
+    <%= label_tag("item_kind", "Item's kind:") %><br>
+    <%= select_tag "item_kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
+                  name: 'item[kind]'
+    %>
+    <%= submit_tag("Search") %>
+  <% end %>
+<% elsif controller_name == "menus" && action_name == "new" %>
+  <%= form_with(url: new_menu_path, method: "get", local: true) do %>
+    <%= label_tag("item_kind", "Item's kind:") %><br>
+    <%= select_tag "item_kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
+                  name: 'item[kind]'
+    %>
+    <%= submit_tag("Search") %>
+  <% end %>
+<% else %>
+  <p>Form render error</p>
+<% end %>

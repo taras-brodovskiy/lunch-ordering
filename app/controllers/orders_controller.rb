@@ -22,21 +22,25 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
     
+    if Order.find_by(order_date: @order.order_date)
+      flash[:error] = "Already have an order for today"
+      redirect_back_or(root_url)
+      return
+    end
+
     if @order.save
       flash[:success] = "Order created!"
       clear_current_order
-      redirect_to root_url
+      redirect_to orders_path
     else
-      flash[:error] = "Order creation failed"
+      flash[:error] = "Order filled incorrectly"
       redirect_back_or(root_url)
     end
   end
 
   def add_to_current_order
-    if !current_user.admin?
-      item = Item.find_by(name: params[:item_name])
-      add_item_to_current_order(item)
-    end
+    item = Item.find_by(name: params[:item_name])
+    add_item_to_current_order(item)
     redirect_back_or(Menu.last)
   end
 

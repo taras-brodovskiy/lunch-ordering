@@ -1,0 +1,29 @@
+<%= form_with model: @menu, local: true, id: 'menu_form' do %>
+
+<table>
+  <thead>    
+    <tr>
+      <th>Course</th>
+      <th>Kind</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody class="new_menu_items">
+    <% @menu.items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td> 
+        <td><%= item.kind %></td>
+        <td><%= item.price %></td> 
+      </tr> 
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total items: <%= @menu.items.count %></td>
+    </tr>
+  </tfoot>
+  </tr>
+</table>
+<br>
+
+<% end %>

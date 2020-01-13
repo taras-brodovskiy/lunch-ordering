@@ -26,27 +26,22 @@ class MenusController < ApplicationController
     @items = @menu.items.where("kind = ?", kind).paginate(page: params[:page])
     @order = Order.new
     store_location
-    render 'show'
   end
 
   def new
-
+    if params[:item]
+      kind = params[:item][:kind]
+    else
+      kind = 'first'
+    end
+    @menu = Menu.today_menu
+    @items = Item.where("kind=?", kind).paginate(page: params[:page])
+    store_location
   end
 
-  def create
-
+  def add_to_current_menu
+    item = Item.find_by(name: params[:item_name])
+    Menu.add_item_to_today_menu(item)
+    redirect_back_or(new_menu_path)
   end
-
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  #private
-  #  def menu_params
-  #    params.require(:menu).permit(:menu_date)
-  #  end
 end

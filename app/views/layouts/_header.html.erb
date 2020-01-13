@@ -3,12 +3,18 @@
   <nav>
     <ul>
       <% if logged_in? %>
-        <li><%= link_to "Menu", last_menu %></li> 
-        <% if current_user.admin %>
+        <% if current_user.admin? %>
+          <li>
+            <a href="#">Menu</a>
+            <ul>
+              <li><%= link_to "Show menu", last_menu %></li>
+              <li><%= link_to "Today menu", new_menu_path %></li>
+            </ul>
           <li><%= link_to "Orders", orders_path %></li>
-          <li><%= link_to "Items", controller: "items", action: "index" %></li>
+          <li><%= link_to "Items", items_path %></li>
           <li><%= link_to "Users", users_path %></li>          
         <% else %>
+          <li><%= link_to "Menu", last_menu %></li>
           <li><%= link_to "My orders", orders_path %></li>
         <% end %>
         <li>

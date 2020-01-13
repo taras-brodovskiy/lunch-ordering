@@ -60,7 +60,7 @@ users = User.all
 first_courses = Item.where(kind: "first").take(10)
 main_courses  = Item.where(kind: "main").take(10)
 drinks        = Item.where(kind: "drink").take(10)
-order_date = Time.zone.now.to_date
+order_date = Time.zone.now.to_date - 1.day
 users.each do |user|
   first_course = first_courses[Random.rand(10)] 
   main_course  = main_courses[Random.rand(10)]
