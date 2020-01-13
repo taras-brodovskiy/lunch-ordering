@@ -48,9 +48,16 @@ class OrdersController < ApplicationController
   def index
     if params[:order]
       @orders_date = params[:order][:order_date]
-      @orders = find_orders.paginate(page: params[:page])
+    else
+      @orders_date = last_order_date
     end
-    unless @orders
+    unless @orders_date
+      flash.now[:info] = "There is no existing orders."
+      @orders = nil
+      return
+    end
+    @orders = find_orders.paginate(page: params[:page])
+    if @orders.size == 0
       flash.now[:info] = "There is no orders for this date. The last existing orders is loaded."
       @orders_date = last_order_date
       @orders = find_orders.paginate(page: params[:page])

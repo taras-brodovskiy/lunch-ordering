@@ -81,7 +81,15 @@ module OrdersHelper
   end
 
   def last_order_date
-    Order.last.order_date
+    if current_user.admin?
+      orders = Order.last 
+    else
+      orders = current_user.orders.last
+    end
+    unless orders
+      return nil
+    end
+    orders.order_date
   end
 
   def current_user_orders
@@ -94,7 +102,8 @@ module OrdersHelper
 
   def total_price_for_date
     total_price = BigDecimal.new("0")    
-    @orders.each { |ord| total_price += ord.price }
+    orders = all_orders    
+    orders.each { |ord| total_price += ord.price }
     total_price
   end
 

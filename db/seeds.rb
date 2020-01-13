@@ -73,6 +73,17 @@ users.each do |user|
                     drink:        drink)
 end
 
+#Users without orders
+10.times do |n|
+  name  = Faker::Name.name
+  email = "user#{n+1}wo@seed.ru"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
 # Menu
 5.times do |n|
   menu_date = Time.zone.now.to_date - (4.day - n.day)
