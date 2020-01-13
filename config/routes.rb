@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
   get '/signup',  to: 'users#new'  
   resources :users,  only: [:new, :create, :edit, :update, :index]
-  resources :items,  only: [:new, :create, :index]
-  resources :menus,  only: [:new, :create, :show]
-  # resources :orders, only: [:create, :index, :show]
+  resources :items,  only: [:create, :index]
+  resources :menus,  only: [:new, :create, :edit, :update, :show]
+  resources :fillings, only: [:create, :update]
+  resources :orders, only: [:create, :index]
+  get '/orders/to-current-order/:item_name', to: 'orders#add_to_current_order'
+  get '/orders/clear-order', to: 'orders#clear_order'
 end

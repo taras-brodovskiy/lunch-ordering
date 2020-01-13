@@ -1,6 +1,16 @@
+<% if current_user.admin? %>
 <li>
   <div><%= image_tag item.photo.url if item.photo? %></div>
   <div><%= item.name %></div>
   <div><%= item.price %></div>
-  <div><%= item.kind %></div>
 </li>
+<% else %>
+<li>
+  <div>
+    <%= link_to image_tag(item.photo.url, alt: "Add to order"), 
+        item_link(item.name) %>
+  </div>
+  <div><%= item.name %></div>
+  <div><%= item.price %></div>
+</li> 
+<% end %>

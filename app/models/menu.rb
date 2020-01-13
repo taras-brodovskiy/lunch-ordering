@@ -3,7 +3,7 @@ class Menu < ApplicationRecord
   has_many :items,    through:     :fillings
   
   validates :menu_date, presence: true
-  validate  :actual_date
+  validate  :actual_date, on: :update
   
   private
     def actual_date

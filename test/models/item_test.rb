@@ -15,11 +15,6 @@ class ItemTest < ActiveSupport::TestCase
     assert_not @item.valid?
   end
 
-  test "price should be present" do
-    @item.price = nil
-    assert_not @item.valid?
-  end
-
   test "kind should be present" do
     @item.kind = " "
     assert_not @item.valid?
@@ -44,15 +39,15 @@ class ItemTest < ActiveSupport::TestCase
   test "price validation should accept valid prices" do
     valid_prices = %w[0.01 12.34 1.2]
     valid_prices.each do |valid_price|
-      @item.price = valid_price.to_f
+      @item.price = BigDecimal(valid_price)
       assert @item.valid?, "#{valid_price.inspect} should be valid"
     end
   end
 
   test "price validation should reject invalid prices" do
-    invalid_prices = %w[0.0 101. -1.]
+    invalid_prices = %w[0.0 101.0 -1.0]
     invalid_prices.each do |invalid_price|
-      @item.price = invalid_price.to_f
+      @item.price = BigDecimal(invalid_price)
       assert_not @item.valid?, "#{invalid_price.inspect} should be invalid"
     end
   end

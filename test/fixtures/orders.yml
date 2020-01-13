@@ -1,4 +1,4 @@
 one:
-  price: 6.0
+  price: <%= BigDecimal("6.0") %>
   user: ivan
   created_at: <%= 1.hour.ago %>

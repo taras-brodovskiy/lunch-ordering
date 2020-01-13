@@ -1,35 +1,44 @@
 soup:
   name: Soup
-  price: 2.5
+  price: <%= BigDecimal("2.5") %>
   kind: first
 
 pasta:
   name: Pasta
-  price: 3.0
+  price: <%= BigDecimal("3.0") %>
   kind: main
 
 latte:
   name: Latte
-  price: 0.5
+  price: <%= BigDecimal("0.5") %>
   kind: drink
 
 <% 40.times do |n| %>
 first_course_item_<%= n + 1 %>: 
   name: <%= "#{Faker::Food.dish}-#{n+1}" %>
   kind: <%= "first" %>
-  price: <%= Random.rand(20.0) + 0.1 %>
+  <% fprice = Random.rand(20.0) + 0.1 %>
+  <% sprice = "%0.2f" % [fprice]  %>
+  <% price = BigDecimal.new(sprice) %> 
+  price: <%= price %>
 <% end %>
 
 <% 45.times do |n| %>
 main_course_item_<%= n + 1 %>: 
   name: <%= "#{Faker::Dessert.variety}-#{n+1}" %>
   kind: <%= "main" %>
-  price: <%= Random.rand(30.0) + 0.1 %>
+  <% fprice = Random.rand(30.0) + 0.1 %>
+  <% sprice = "%0.2f" % [fprice]  %>
+  <% price = BigDecimal.new(sprice) %> 
+  price: <%= price %>
 <% end %>
 
 <% 35.times do |n| %>
 drink_item_<%= n + 1 %>: 
   name: <%= "#{Faker::Coffee.blend_name}-#{n+1}" %>
   kind: <%= "drink" %>
-  price: <%= Random.rand(5.0) + 0.1 %>
+  <% fprice = Random.rand(5.0) + 0.1 %>
+  <% sprice = "%0.2f" % [fprice]  %>
+  <% price = BigDecimal.new(sprice) %> 
+  price: <%= price %>
 <% end %>

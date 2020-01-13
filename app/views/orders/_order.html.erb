@@ -1,0 +1,9 @@
+<li>
+<% if current_user.admin? %>
+  <div>User: <%= order.user.name %> (<%= order.user.email %>)</div>    
+<% end %>
+  <div>Order price: <%= order.price %></div>
+  <div>First course: <%= order.first_course.name %> (<%= order.first_course.price %>)</div>
+  <div>Main course: <%= order.main_course.name %> (<%= order.main_course.price %>)</div>
+  <div>Drink: <%= order.drink.name %> (<%= order.drink.price %>)</div>
+</li>

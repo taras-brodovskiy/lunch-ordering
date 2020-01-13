@@ -16,7 +16,7 @@ class OrderTest < ActiveSupport::TestCase
   end
   
   test "price should be equal to total cost of items" do
-    @order.price = 99.99
+    @order.price = BigDecimal("99.99")
     assert_not @order.valid?
   end
 end

@@ -1,0 +1,18 @@
+<% provide(:title, 'Orders') %>
+<h1>Orders index</h1>
+
+<% if current_user.admin? %>
+<h2 id="orders_count">Total orders for <%= @orders_date %>: <%= @orders.count %></h2>
+<h2 id="orders_price">Total price: <%= total_price_for_date %></h2>
+<%= render 'date_form' %>
+<h2>Orders list:</h2>
+<% else %>
+<%= render 'date_form' %>
+<h2 id="orders_count">Order for: <%= @orders_date %></h2>
+<% end %>
+
+<%= will_paginate @orders %>
+<ul id="orders_list">
+  <%= render @orders %>
+</ul>
+<%= will_paginate @orders %>

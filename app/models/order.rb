@@ -10,8 +10,9 @@ class Order < ApplicationRecord
   validate :actual_price
 
   def actual_price
-    if (first_course.price + main_course.price + drink.price) != price
-      errors.add(:order_price, "can't differ from the total cost of items")
+    differ = price - (first_course.price + main_course.price + drink.price)
+    unless differ === BigDecimal("0")
+      errors.add(:price, "can't differ from the total cost of items")
     end 
   end
 end

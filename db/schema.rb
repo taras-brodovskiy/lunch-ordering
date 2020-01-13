@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_171248) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.float "price"
+    t.decimal "price", precision: 8, scale: 2
     t.string "kind"
     t.string "photo"
     t.datetime "created_at", null: false
@@ -51,11 +51,13 @@ ActiveRecord::Schema.define(version: 2019_12_01_171248) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.float "price"
+    t.decimal "price", precision: 8, scale: 2
+    t.date "order_date"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_orders_on_created_at"
+    t.index ["order_date"], name: "index_orders_on_order_date"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
