@@ -2,11 +2,14 @@
 <h1>Users</h1>
 
 <h2>Total users: <%= @users.size %></h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= will_paginate %>
 
-<%= will_paginate %>
+    <ul id="items_list">
+      <%= render @users %>
+    </ul>
 
-<ul>
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
+    <%= will_paginate %>
+  </div>
+</div>

@@ -1,29 +1,33 @@
-<%= form_with(url: items_path, method: "get", local: true) do %>
-  <%= label_tag(:item_kind, "Item's kind:") %><br>
-  <%= select_tag "item_kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
-                name: 'item[kind]'
-  %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: items_path, method: "get", local: true) do %>
+      <%= label_tag(:item_kind, "Item's kind:") %>
+      <%= select("item", "kind", Item.all_kinds.collect{|kind| [kind, kind]}, {},
+          { class: 'form-control' }) %>
+      <%= submit_tag("Search", class: "btn btn-primary") %>
+    <% end %>
+  </div>
+</div>
 
-<br>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@item) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= label_tag(:item_kind, "Item's kind:") %>
+      <%= select("item", "kind", Item.all_kinds.collect{|kind| [kind, kind]}, {},
+          { class: 'form-control' }) %>
 
-<%= form_for(@item) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-  <%= f.label :kind %>
-  <%=
-    select_tag "item_kind", options_for_select([["First courses", "first"], ["Main courses", "main"], ["Drinks", "drink"]], "First_courses"),
-                name: 'item[kind]'
-  %><br>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :price %>
-  <%= f.text_field :price %><br>
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
 
-  <%= f.label :photo %>
-  <%= f.file_field :photo, accept: 'image/png,image/jpeg,image/gif' %><br>
+      <%= f.label :photo %>
+      <%= f.file_field :photo, accept: 'image/png,image/jpeg,image/gif', class: 'form-control' %>
 
-  <%= f.submit yield(:button_text) %>
-<% end %>
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

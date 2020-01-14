@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   # VALID_PRICE_FORMAT = /\A\d{1,2}\.\d{1,2}\z/
   validate  :price_format
   validates :kind,  presence: true, inclusion: { in: %w(first main drink) }
+  validates :photo, presence: true
   validate  :photo_size
 
   private
@@ -20,6 +21,10 @@ class Item < ApplicationRecord
     # Downcases the kind
     def fix_kind_format
       kind.downcase!
+    end
+
+    def Item.all_kinds
+      ["first", "main", "drink"]
     end
 
     # Validates the size of an uploaded picture.

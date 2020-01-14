@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
     
-    if Order.find_by(order_date: @order.order_date)
+    if Order.find_by(order_date: @order.order_date, user_id: current_user.id)
       flash[:error] = "Already have an order for today"
       redirect_back_or(root_url)
       return

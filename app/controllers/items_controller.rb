@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
       flash.now[:info] = "The item was successfully added to the list"
       redirect_to items_path
     else
-      redirect_to items_path
+      @items = Item.where("kind = ?", "first").paginate(page: params[:page])
+      render 'items/index'
     end
   end
 

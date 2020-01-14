@@ -1,5 +1,5 @@
 <% if current_user.admin? && controller_name == "menus" && action_name == "new" %>
-  <li>
+  <li class="list-group-item">
     <div>
       <%= link_to image_tag(item.photo.url, alt: "Add to menu"), 
           menu_item_link(item.name) %>
@@ -8,7 +8,7 @@
     <div><%= item.price %></div>
   </li> 
 <% elsif controller_name == "menus" || controller_name == "orders" %>
-  <li>
+  <li class="list-group-item">
     <div>
      <%= link_to image_tag(item.photo.url, alt: "Add to order"), 
         order_item_link(item.name) %>
@@ -17,7 +17,7 @@
     <div><%= item.price %></div>
   </li>
 <% else %>
-  <li>
+  <li class="list-group-item">
     <div>
      <%= image_tag(item.photo.url, alt: "Item picture") if item.photo? %>
     </div>

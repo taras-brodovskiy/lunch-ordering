@@ -1,4 +1,9 @@
-<%= form_with(url: menu_path, method: "get", local: true) do %>
-  <%= select("menu", "menu_date", all_menu_dates.collect{|date| [date, date]}) %>
-  <%= submit_tag("Go") %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: menu_path, method: "get", selected: @menu.menu_date, local: true) do %>
+      <%= select("menu", "menu_date", all_menu_dates.collect{|date| [date, date]}, {},
+          { class: 'form-control' }) %>
+      <%= submit_tag "Go", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

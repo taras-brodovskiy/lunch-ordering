@@ -1,12 +1,16 @@
 <% provide(:title, 'Menu') %>
-<h1 id="menu_date">Menu for: <%= @menu.menu_date %></h1>
+<h1>Menu for: <%= @menu.menu_date %></h1>
 
 <%= render 'date_form' %>
 <%= render  'kind_form' %>
 <%= render 'current_order_form' %>
 
-<%= will_paginate @items %>
-<ul id="items_list">
-  <%= render @items %>
-</ul>
-<%= will_paginate @items %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= will_paginate @items %>
+    <ul class="list-group">
+      <%= render @items %>
+    </ul>
+    <%= will_paginate @items %>
+  </div>
+</div>

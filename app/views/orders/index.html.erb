@@ -15,11 +15,15 @@
     <%= render 'date_form' %>
     <h2 id="orders_count">Order for: <%= @orders_date %></h2>
   <% end %>
-  <%= will_paginate @orders %>
-  <ul id="orders_list">
-    <%= render @orders %>
-  </ul>
-  <%= will_paginate @orders %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= will_paginate @orders %>
+      <ul class="list-group">
+        <%= render @orders %>
+      </ul>
+      <%= will_paginate @orders %>
+    </div>
+  </div>
 <% else %>
   <h2 id="no_orders">Total orders: 0</h2>
 <% end %>

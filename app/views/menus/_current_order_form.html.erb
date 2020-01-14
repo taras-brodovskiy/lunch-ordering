@@ -1,42 +1,46 @@
-<%= form_with model: @order, local: true, id: 'order_form' do %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @order, local: true, id: 'order_form' do %>
 
-<table>
-  <thead>    
-    <tr>
-      <th>Course</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="fcname"><%= current_order_item_name("first") %></td>
-      <td class="fcprice"><%= current_order_item_price("first") %></td>
-    </tr>
-    <tr>
-      <td class="mcname"><%= current_order_item_name("main") %></td>
-      <td class="mcprice"><%= current_order_item_price("main") %></td>
-    </tr>
-    <tr>
-      <td class="dname"><%= current_order_item_name("drink") %></td>
-      <td class="dprice"><%= current_order_item_price("drink") %></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Total price:</td>
-      <td class="tprice"><%= current_order_total_price %></td>
-    </tr>
-  </tfoot>
-  </tr>
-</table>
-<br>
+    <table class="table">
+      <thead>    
+        <tr>
+          <th>Course</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fcname"><%= current_order_item_name("first") %></td>
+          <td class="fcprice"><%= current_order_item_price("first") %></td>
+        </tr>
+        <tr>
+          <td class="mcname"><%= current_order_item_name("main") %></td>
+          <td class="mcprice"><%= current_order_item_price("main") %></td>
+        </tr>
+        <tr>
+          <td class="dname"><%= current_order_item_name("drink") %></td>
+          <td class="dprice"><%= current_order_item_price("drink") %></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total price:</td>
+          <td class="tprice"><%= current_order_total_price %></td>
+        </tr>
+      </tfoot>
+      </tr>
+    </table>
+    <br>
 
-<%= link_to 'Clear order', clear_order_link %>
+    <%= link_to 'Clear order', clear_order_link, class: "btn btn-primary" %>
 
-<%= hidden_field(:order, :first_course, value: current_order_item_name("first")) %>
-<%= hidden_field(:order, :main_course,  value: current_order_item_name("main")) %>
-<%= hidden_field(:order, :drink,        value: current_order_item_name("drink")) %>
-<%= hidden_field(:order, :price,        value: current_order_total_price) %>
-<%= hidden_field(:order, :order_date,   value: Date.today) %>
-<%= submit_tag("Make order!") %>
-<% end %>
+    <%= hidden_field(:order, :first_course, value: current_order_item_name("first")) %>
+    <%= hidden_field(:order, :main_course,  value: current_order_item_name("main")) %>
+    <%= hidden_field(:order, :drink,        value: current_order_item_name("drink")) %>
+    <%= hidden_field(:order, :price,        value: current_order_total_price) %>
+    <%= hidden_field(:order, :order_date,   value: Date.today) %>
+    <%= submit_tag("Make order!", class: "btn btn-primary") %>
+    <% end %>
+  </div>
+</div>
