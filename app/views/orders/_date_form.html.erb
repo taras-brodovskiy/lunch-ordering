@@ -1,5 +1,5 @@
 <%= form_with(url: orders_path, method: "get", local: true) do %>
-  <%= date_field "order", "order_date" %>
+  <%= select("order", "order_date", all_dates.collect{|date| [date, date]}) %>
   <%= submit_tag("Go") %>
 <% end %>
 <br>

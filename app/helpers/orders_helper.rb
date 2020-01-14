@@ -134,4 +134,22 @@ module OrdersHelper
     end
     out
   end
+
+  def all_dates
+    if current_user.admin? || current_user.supplier?
+      orders = Order.all
+    else
+      orders = Order.where("user_id=?", current_user.id)
+    end
+    unless orders
+      return nil
+    end
+    dates = []
+    orders.each do |order|
+      unless dates.index(order.order_date)
+        dates << order.order_date
+      end
+    end
+    dates
+  end
 end

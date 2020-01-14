@@ -92,7 +92,7 @@ end
 
 # Menu
 5.times do |n|
-  menu_date = Time.zone.now.to_date - (4.day - n.day)
+  menu_date = Time.zone.now.to_date - (5.day - n.day)
   menu = Menu.create!(menu_date: menu_date) 
   first_courses = Item.where(kind: "first").take(20)
   main_courses  = Item.where(kind: "main").take(20)
