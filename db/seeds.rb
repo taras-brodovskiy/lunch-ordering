@@ -92,11 +92,11 @@ end
 
 # Menu
 5.times do |n|
-  menu_date = Time.zone.now.to_date - (5.day - n.day)
+  menu_date = Time.zone.now.to_date - (4.day - n.day)
   menu = Menu.create!(menu_date: menu_date) 
-  first_courses = Item.where(kind: "first").take(20)
-  main_courses  = Item.where(kind: "main").take(20)
-  drinks        = Item.where(kind: "drink").take(20)   
+  first_courses = Item.where(kind: "first").take(15)
+  main_courses  = Item.where(kind: "main").take(15)
+  drinks        = Item.where(kind: "drink").take(15)   
   items = first_courses + main_courses + drinks    
   items.each do |item|  
     menu.fillings.create!(menu: menu,
