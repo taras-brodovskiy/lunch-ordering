@@ -108,10 +108,30 @@ module OrdersHelper
   end
 
   def find_orders
-    if current_user.admin?
+    if current_user.admin? || current_user.supplier?
       all_orders
     else
       current_user_orders
     end
+  end
+
+  def orders_for_json
+    out = {}
+    n = 1
+    @orders.each do |order|
+      ns = n.to_s      
+      out[ns] = { "User" => order.user.name, 
+                  "Email" => order.user.email,
+                  "Price" => order.price,
+                  "First course" => { "Name" => order.first_course.name,
+                                      "Price" => order.first_course.price },
+                  "Main course"  => { "Name" => order.main_course.name,
+                                      "Price" => order.main_course.price },
+                  "Drink"        => { "Name" => order.drink.name,
+                                      "Price" => order.drink.price }
+      }
+      n += 1
+    end
+    out
   end
 end

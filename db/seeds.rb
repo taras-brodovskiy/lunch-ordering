@@ -5,6 +5,12 @@ User.create!(name:  "Admin",
              password_confirmation: "password",
              admin: true)
 
+User.create!(name: "Supplier",
+             email: "supplier@seed.ru",
+             password:              "password",
+             password_confirmation: "password",
+             supplier: true)
+
 40.times do |n|
   name  = Faker::Name.name
   email = "user#{n+1}@seed.ru"

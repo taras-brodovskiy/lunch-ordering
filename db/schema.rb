@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_171248) do
+ActiveRecord::Schema.define(version: 2020_01_13_233112) do
 
   create_table "contents", force: :cascade do |t|
     t.integer "order_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_171248) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "remember_digest"
+    t.boolean "supplier", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

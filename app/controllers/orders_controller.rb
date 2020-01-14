@@ -55,6 +55,15 @@ class OrdersController < ApplicationController
     else
       @orders_date = last_order_date
     end
+    if current_user.supplier?
+      if @orders_date
+        @orders = find_orders
+      else
+        @orders = nil
+      end
+      out = orders_for_json
+      render json: out
+    end
     unless @orders_date
       flash.now[:info] = "There is no existing orders."
       @orders = nil
