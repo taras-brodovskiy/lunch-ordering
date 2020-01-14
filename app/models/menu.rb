@@ -6,7 +6,7 @@ class Menu < ApplicationRecord
 
   def Menu.add_item_to_today_menu(item)
     menu = Menu.today_menu
-    unless menu.item
+    unless menu.items.include?(item)
       menu.items << item
     end
   end
