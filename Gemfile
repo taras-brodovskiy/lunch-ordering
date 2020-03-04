@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.1'
 
 gem 'rails',                   '5.2.3'
-gem 'puma', 			             '3.12.1'
+gem 'puma', 			             '3.12.4'
 gem 'bcrypt',                  '3.1.12'
 gem 'faker',                   '2.0'
 gem 'carrierwave',             '2.0.2'
